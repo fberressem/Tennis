@@ -42,3 +42,37 @@ To make training more stable, *fixed Q-targets* were used. In this technique, th
 <p align="center"> <img src="https://latex.codecogs.com/svg.latex?\omega=\tau\omega^{\prime}+(1-\tau)\omega" /></p>
 
 here, <img src="https://latex.codecogs.com/svg.latex?\omega^{\prime}" /> are the weights of the neural network that is trained using some form of gradient descent.
+
+
+### Network Architecture and Hyperparameters
+
+The neural networks used here were simple *dense networks*, i.e. they consist of fully connected layers only. The architecture for the actor was as follows:
+
+- Input layer of size `3x8` (corresponding to the 3 stacks of 8-dimensional states)
+- Hidden layer with `64` neurons and `ReLU`-activation
+- Hidden layer with `16` neurons and `ReLU`-activation
+- Output layer with `2` neurons (corresponding to the 2-dimensional actions) with `tanh` activation function
+
+The architecture for the critic was as follows:
+
+- Input layer of size `3x8` (corresponding to the 3 stacks of 8-dimensional states)
+- Hidden layer with `64` neurons and `ReLU`-activation
+- Concatenation of 2-dimensional actions, hence making this layer `26`-dimensional
+- Hidden layer with `16` neurons and `ReLU`-activation
+- Output layer with `1` neuron (corresponding to the action-value) without activation function, i.e. linearly activated.
+
+The hyperparameters used are given in the table below:
+
+| Hyperparameter   |      Value      |
+|----------|:-------------:|
+| Q-target parameter <img src="https://latex.codecogs.com/svg.latex?\tau" /> |  0.1  |
+| Discount factor <img src="https://latex.codecogs.com/svg.latex?\gamma" /> |    0.99   |
+| Batchsize | 2^7 |
+| Size of replay buffer | 2^20 |
+| Number of replays per learning phase | 2 |
+| Actor learning rate <img src="https://latex.codecogs.com/svg.latex?\alpha_\theta" /> | 0.0001 |
+| Critic learning rate <img src="https://latex.codecogs.com/svg.latex?\alpha_\phi" /> | 0.0001 |
+| Ornstein-Uhlenbeck mean reversion level <img src="https://latex.codecogs.com/svg.latex?\mu_{OU}" /> | 0 |
+| Ornstein-Uhlenbeck mean reversion rate <img src="https://latex.codecogs.com/svg.latex?\theta_{OU}" /> | 0.15 |
+| Ornstein-Uhlenbeck diffusion constant <img src="https://latex.codecogs.com/svg.latex?\sigma_{OU}" /> | 0.2 |
+
