@@ -228,8 +228,6 @@ class Agent():
 
 
             if self.positive_emphasis:
-                print("timestep", timestep)
-                print(len(self.replay_buffer))
                 # If this episode was more successful than previous ones, append trajectory to positive_replay_buffer
                 if max(scores) > np.mean(recent_max_scores):
                     self.replay_buffer.copy_last_trajectory(self.positive_replay_buffer, self.num_agents * timestep)
