@@ -33,7 +33,7 @@ class Agent():
     
         self.num_episodes = agent_dict.get("num_episodes", 10000)
         self.save_after = agent_dict.get("save_after", -1)
-        self.name = agent_dict.get("name", "reacher")
+        self.name = agent_dict.get("name", "tennis")
 
         self.gamma = agent_dict.get("gamma", 0.9)
 
