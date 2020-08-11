@@ -82,7 +82,7 @@ The hyperparameters used are given in the table below:
 
 The reinforcement agents as described above reach the required average score (averaged over the last 100 episodes) of **`+0.5`** after about 4100 episodes. At their peak performance they achieve an average score of more than **`+0.93`** in training mode, while in evaluation mode they reach an astonishing average score of more than **`+2.5`**. In evaluation mode the ball was dropped only three times in 100 matches, with all the other matches reaching the timeout limit, which implies that the performance is close to optimal.
 
-![results](https://github.com/fberressem/Reacher/blob/master/Results.png)
+![results](https://github.com/fberressem/Tennis/blob/master/Results.png)
 
 In general, the agent performs quite well. However, in the following there are some suggestions on how performance and especially the training speed may still be improved.
 
