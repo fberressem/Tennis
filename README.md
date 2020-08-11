@@ -48,3 +48,13 @@ python evaluate.py
 
 allows to evaluate the performance of the saved agent of the given name. 
 
+### Background Information
+In this environment two players (or agents) are playing a game of tennis. The aim for both agents is to collect as many points as possible, where a player gets a reward of **`+0.1`** every time he manages to play the ball over the net and a reward of **`-0.01`** if the player lets the ball hit the ground or hits it out of bounds and the episode is ended. Hence, both players try to collaborate while playing by keeping the ball in the game for as long as possible to maximize their reward. At every timestep, each player is provided a stack of 3 8-dimensional observations and has to decide on the actions to take. For every player, the corresponding action-vector consists of 2 real numbers in the range from -1 to +1. The game is ended after one of the players drops the ball or hits it out of bounds or after a given number of successful passes, which makes this game an episodic one. In every episode, the score is calculated as the maximum summed up rewards of the player obtained during this episode. Explicitely, this means that the score of episode *i* is defined as
+
+<p align="center"> <img src="https://latex.codecogs.com/svg.latex?Score_i=max\left(\sum_{r\in\;R^A_i}r,\sum_{r\in\;R^B_i}r\right)" /></p>
+
+where <img src="https://latex.codecogs.com/svg.latex?R^A_i"> is the set of rewards obtained by player *A* during episode *i*, and <img src="https://latex.codecogs.com/svg.latex?R^B_i"> for player *B* correspondingly.
+
+The environment is considered solved, when the average (over 100 episodes) of those scores defined above is at least **`+0.5`**.
+
+For more information on the approach that was used to solve this environment, see [`Report.md`](https://github.com/fberressem/Tennis/blob/master/Report.md).
