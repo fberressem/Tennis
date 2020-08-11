@@ -20,8 +20,8 @@ To set up the python environment and install all requirements for using this rep
 3. Download the Unity-environment from Udacity and unzip it:
     ```bash
     wget https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip
-    unzip Banana_Linux.zip
-    rm Banana_Linux.zip
+    unzip Tennis_Linux.zip
+    rm Tennis_Linux.zip
     ```
 
 For using this repository using Windows OS or Mac OSX, please follow the instructions given ![here](https://github.com/udacity/deep-reinforcement-learning#dependencies). Afterwards download the Unity-environment for ![Windows (64-bit)](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86_64.zip), ![Windows (32-bit)](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Windows_x86.zip) or ![Mac](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip) and unzip it in this repository.
