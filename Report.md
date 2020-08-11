@@ -80,9 +80,27 @@ The hyperparameters used are given in the table below:
 
 ### Results
 
-The reinforcement agents as described above reach the required average score (averaged over the last 100 episodes) of **`+0.5`** after about 4100 episodes. At their peak performance they achieve an average score of more than **`+0.93`** in training mode, while in evaluation mode they reach an astonishing average score of more than **`+2.5`**. In evaluation mode the ball was dropped only three times in 100 matches, with all the other matches reaching the timeout limit, which implies that the performance is close to optimal.
+The reinforcement agents as described above reach the required average score (averaged over the last 100 episodes) of **`+0.5`** after about 4100 episodes. At their peak performance they achieve an average score of more than **`+0.93`** in training mode, while in evaluation mode they reach an astonishing average score of more than **`+2.5`**. In evaluation mode the ball was dropped only three times in 100 matches, with all the other matches reaching the timeout limit, which implies that the performance is close to optimal. Hence, the agents learned to cooperate very well and master this task of playing tennis with flying colors.
 
 ![results](https://github.com/fberressem/Tennis/blob/master/Results.png)
 
 In general, the agent performs quite well. However, in the following there are some suggestions on how performance and especially the training speed may still be improved.
+
+
+
+### Future Improvements
+
+There are some improvements that may be implemented in the future:
+
+1. To make training more stable, one might change the fixed Q-targets part to *double Q-Learning* such that the choice of actions while interacting with the environment is done using either one of the neural networks with the update rules being applied accordingly. In this case, there would be no dedicated *target network* anymore, while training should still be improved, as the networks would still be regularizing each other.
+
+2. One might modify the rewards the agent sees to steer its behavior, e.g. by punishing giving an reward for small-valued actions to avoid hectic behaviour. However, this has to be done with great care as to avoid the agent learning a wrong behavior by relying on those additional rewards.
+
+3. One could add prioritization in the replay buffer which could take into account how successful (or unsuccessful) the episodes they stem from were. This might improve stability of learning as learning about very good or very bad actions would be emphasized. In this implementation I tried to add an additional replay buffer for positive examples, such that the (in the beginning rarely occuring) positive experiences are utilized more efficiently. However, this did not significantly improve the performance in the conducted tests, which may be due to an additionally introduced bias by reusing these memories more often than others.
+
+4. The final experiences from all the episodes ending due to the time limit could be disregarded when learning, as they are not representative for the value of the state. That is, the agent does not know about whether the next state is a terminal one or not when calculating its expected return, so that when training on this memory, it skews the value of the state, making training less stable. Hence, the performance might be improved by disregarding all next-to-terminal states in the training phase.
+
+5. It might be beneficial to use **Trust Region Policy Optimization** (TRPO) rather than gradient descent based methods, as they guarantee policy improvement in every step and convergence to the optimum under some (often met) conditions. This might lead to a significant improvement, as the application of gradient descent is quite unstable with two agents interacting with each other because for both agents, the environment seems to be very unstable.
+
+5. Better architectures might be found using grid-searching or more sophisticated methods, like evolutionary algorithms. Given that the agent already performs quite well, this might be fruitful thing to, as in principle the agent is working and on only wants to step training up a notch. 
 
