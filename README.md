@@ -1,6 +1,7 @@
 # Tennis
 Solution to the third project of Udacitys Reinforcement Learning Nanodegree
 
+![video](https://user-images.githubusercontent.com/63595824/89938604-05547100-dc17-11ea-8e90-067b6e4440f5.gif)
 
 ### Quick Installation
 
